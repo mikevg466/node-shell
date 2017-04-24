@@ -1,3 +1,4 @@
+
 // Output a prompt
 process.stdout.write('bash > ');
 

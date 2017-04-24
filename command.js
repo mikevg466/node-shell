@@ -71,7 +71,64 @@ Commands.tail = function(done, files){
   }
   //process.stdout.write('\n bash > ');
 }
+Commands.sort = function(files){
+  if(!files.length){
+    process.stdout.write("Specify a file.");
+    process.stdout.write('\n bash > ');
+  }
+  else{
+    var fileName = './' + files[0];
+    fs.readFile(fileName, (err, data) => {
+      if (err) throw err;
+      var dataArr = String(data).split("\n").sort();
+      process.stdout.write(dataArr.join("\n"));
+      process.stdout.write('\n bash > ');
+    }
+    );
+  }
+}
+Commands.wc = function(files){
+  if(!files.length){
+    process.stdout.write("Specify a file.");
+    process.stdout.write('\n bash > ');
+  }
+  else{
+    var fileName = './' + files[0];
+    fs.readFile(fileName, (err, data) => {
+      if (err) throw err;
+      var dataArr = String(data).split("\n");
+      process.stdout.write(String(dataArr.length));
+      process.stdout.write('\n bash > ');
+    }
+    );
+  }}
+Commands.uniq = function(files){
+  var empArr = [];
+  if(!files.length){
+    process.stdout.write("Specify a file.");
+    process.stdout.write('\n bash > ');
+  }
+  else{
+    var fileName = './' + files[0];
+    fs.readFile(fileName, (err, data) => {
+      if (err) throw err;
+      var dataArr = String(data).split("\n");
 
+      var prevLine = dataArr[0];
+      empArr.push(prevLine);
+      for(var i = 1; i <dataArr.length; i++){
+        if(prevLine!==dataArr[i]){
+          empArr.push(dataArr[i]);
+        }
+         prevLine = dataArr[i];
+      }
+      process.stdout.write(empArr.join("\n"));
+      process.stdout.write('\n bash > ');
+    }
+    );
+  }
+
+}
 
 Commands.curl = function(done, url){
   var url = url[0];

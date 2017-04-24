@@ -22,3 +22,7 @@ Commands.ls = function(){
     process.stdout.write('\nbash > ');
   });
 }
+Commands.echo = function(args){
+  process.stdout.write(args.join(" "));
+  process.stdout.write('\n bash > ');
+}

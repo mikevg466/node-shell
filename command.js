@@ -1,9 +1,8 @@
 
-var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-var monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-var fs = require('fs');
-var request = require('request');
-var chalk = require('chalk');
+const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const fs = require('fs');
+const request = require('request');
 
 var Commands = module.exports = {};
 Commands.pwd = function(done){
@@ -127,6 +126,10 @@ Commands.uniq = function(files){
 
 Commands.curl = function(done, url){
   var url = url[0];
-  request(url).pipe(process.stdout);
-  process.stdout.write(chalk.blue('\nbash > '));
+  // request(url).pipe(process.stdout);
+  request(url, function(err, response, body){
+    if(err) throw err;
+    else if(!body) done("No Body found", true);
+    else done(body);
+  });
 }

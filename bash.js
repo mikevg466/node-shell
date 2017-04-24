@@ -8,6 +8,20 @@ process.stdin.on('data', function (data) {
   var cmdArgs = cmd.split(" ").slice(1);
   cmd = cmd.split(" ")[0];
 
+
+
+
+
+
+//"hello world"
+//"hello world"
+//"hello world"
+//"hello world"
+
+
+
+
+
   // process.stdout.write('You typed: ' + cmd);
   var bash = require("./command.js");
   if(bash.hasOwnProperty(cmd)) bash[cmd](cmdArgs);

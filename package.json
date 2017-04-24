@@ -1,0 +1,26 @@
+{
+  "name": "node-shell",
+  "version": "1.0.0",
+  "description": "Creates a bash shell using node.js",
+  "main": "bash.js",
+  "scripts": {
+    "test": "date"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikevg466/node-shell.git"
+  },
+  "keywords": [
+    "bash",
+    "shell"
+  ],
+  "author": "Mike van Genderen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikevg466/node-shell/issues"
+  },
+  "homepage": "https://github.com/mikevg466/node-shell#readme",
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}

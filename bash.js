@@ -10,6 +10,6 @@ process.stdin.on('data', function (data) {
   if(bash.hasOwnProperty(cmd)) bash[cmd]();
   else process.stdout.write('Command: "' + cmd + '" does not exist.');
 
-  process.stdout.write('\nbash > ');
+  // process.stdout.write('\nbash > ');
 
 });

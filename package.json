@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/mikevg466/node-shell#readme",
   "dependencies": {
+    "chalk": "^1.1.3",
     "request": "^2.81.0"
   }
 }

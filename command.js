@@ -28,7 +28,7 @@ Commands.echo = function(done, args){
 }
 Commands.cat = function(done, files){
   if(!files.length){
-    done("Specify a file.");
+    done("Specify a file.", true);
   }
   else{
     var fileName = './' + files[0];
@@ -41,7 +41,7 @@ Commands.cat = function(done, files){
 }
 Commands.head = function(done, files){
   if(!files.length){
-    done("Specify a file.");
+    done("Specify a file.", true);
   }
   else{
     var fileName = './' + files[0];
@@ -58,7 +58,7 @@ Commands.head = function(done, files){
 }
 Commands.tail = function(done, files){
   if(!files.length){
-    done("Specify a file.");
+    done("Specify a file.", true);
   }
   else{
     var fileName = './' + files[0];
@@ -74,40 +74,35 @@ Commands.tail = function(done, files){
 }
 Commands.sort = function(files){
   if(!files.length){
-    process.stdout.write("Specify a file.");
-    process.stdout.write('\n bash > ');
+    done("Specify a file.", true);
   }
   else{
     var fileName = './' + files[0];
     fs.readFile(fileName, (err, data) => {
       if (err) throw err;
       var dataArr = String(data).split("\n").sort();
-      process.stdout.write(dataArr.join("\n"));
-      process.stdout.write('\n bash > ');
+      done(dataArr.join("\n"));
     }
     );
   }
 }
 Commands.wc = function(files){
   if(!files.length){
-    process.stdout.write("Specify a file.");
-    process.stdout.write('\n bash > ');
+    done("Specify a file.", true);
   }
   else{
     var fileName = './' + files[0];
     fs.readFile(fileName, (err, data) => {
       if (err) throw err;
       var dataArr = String(data).split("\n");
-      process.stdout.write(String(dataArr.length));
-      process.stdout.write('\n bash > ');
+      done(String(dataArr.length));
     }
     );
   }}
 Commands.uniq = function(files){
   var empArr = [];
   if(!files.length){
-    process.stdout.write("Specify a file.");
-    process.stdout.write('\n bash > ');
+    done("Specify a file.", true);
   }
   else{
     var fileName = './' + files[0];
@@ -123,8 +118,7 @@ Commands.uniq = function(files){
         }
          prevLine = dataArr[i];
       }
-      process.stdout.write(empArr.join("\n"));
-      process.stdout.write('\n bash > ');
+      done(empArr.join("\n"));
     }
     );
   }

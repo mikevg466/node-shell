@@ -9,18 +9,17 @@ process.stdin.on('data', function (data) {
   var cmd = data.toString().trim(); // remove the newline
   var cmdArgs = cmd.split(" ").slice(1);
   cmd = cmd.split(" ")[0];
-  var done = function(result){
-    process.stdout.write(result);
+  var done = function(result, err){
+    if(err){
+      process.stderr.write(chalk.red(result));
+    } else{
+      process.stdout.write(result);
+    }
     process.stdout.write(chalk.blue("\nbash > "));
   }
 
   // process.stdout.write('You typed: ' + cmd);
   var bash = require("./command.js");
   if(bash.hasOwnProperty(cmd)) bash[cmd](done, cmdArgs);
-  else{
-    process.stderr.write(chalk.red('Command Not Found: ' + cmd ));
-    process.stdout.write(chalk.blue('\nbash > '));
-  }
-
-
+  else done('Command Not Found: ' + cmd , true);
 });

@@ -12,7 +12,7 @@ process.stdin.on('data', function (data) {
   // process.stdout.write('You typed: ' + cmd);
   switch(cmd){
     case 'pwd':
-
+      console.log(process.cwd());
       break;
     case 'date':
       var date = new Date();
